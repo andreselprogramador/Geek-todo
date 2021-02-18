@@ -19,7 +19,7 @@ app.use(cors());
 //evetos: //crear/actualizar/eliminar
 app.use("/api/auth", require("./routes/auth"));
 
-app.use("/todos", require("./routes/events"));
+app.use("/api/todos", require("./routes/events"));
 
 //directorio publico
 app.use(express.static("public"));
