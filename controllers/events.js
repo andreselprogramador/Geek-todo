@@ -2,8 +2,10 @@ const Todo = require('../models/Todo');
 
 const getTodos = async (req, res) => {
 
+    const userId = req.params.userId;
+
     try{
-        const todos = await Todo.find();
+        const todos = await Todo.find({user: userId});
 
 
         return res.json({
@@ -43,11 +45,6 @@ const crearTodo = async (req, res) => {
             msg: "No se pudo crear el todo"
         });
     }
-
-    return res.status(201).json({
-        ok: true,
-        msg: "crearTodo",
-    })
 }
 
 const actualizarTodo = async (req, res) => {
@@ -134,11 +131,6 @@ const eliminarTodo = async (req, res) => {
             msg: "No se pudo eliminar el todo"
         });
     }
-
-    return res.status(200).json({
-        ok: true,
-        msg: "eliminarTodo",
-    })
 }
 
 module.exports = {
